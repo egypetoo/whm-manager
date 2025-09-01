@@ -1,0 +1,9 @@
+# ملفات حساسة يجب تجاهلها وعدم رفعها إلى GitHub
+*.log
+*.pyc
+__pycache__/
+*.xlsx
+*.csv
+*.sh
+servers_config.py
+cpanel_login_*.txt

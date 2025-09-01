@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# WHM Manager Wrapper Script
+# يمكن استخدامه من أي مكان في النظام
+
+# تحديد مسار السكريبت
+SCRIPT_DIR="/home/egypetoo/scripts/whm-manager"
+VENV_DIR="$SCRIPT_DIR/venv"
+
+# التحقق من وجود المجلد
+if [ ! -d "$SCRIPT_DIR" ]; then
+    echo "❌ خطأ: مجلد السكريبت غير موجود: $SCRIPT_DIR"
+    echo "يرجى التأكد من المسار الصحيح"
+    exit 1
+fi
+
+# التحقق من وجود البيئة الافتراضية
+if [ ! -d "$VENV_DIR" ]; then
+    echo "❌ خطأ: البيئة الافتراضية غير موجودة"
+    echo "يرجى تشغيل: cd $SCRIPT_DIR && python3 -m venv venv"
+    exit 1
+fi
+
+# الانتقال إلى مجلد السكريبت
+cd "$SCRIPT_DIR"
+
+# تفعيل البيئة الافتراضية وتشغيل السكريبت
+source "$VENV_DIR/bin/activate"
+python3 run_script.py
+
+# إلغاء تفعيل البيئة الافتراضية
+deactivate
